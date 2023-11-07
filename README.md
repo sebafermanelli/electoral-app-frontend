@@ -1,4 +1,4 @@
-# Documentación electoral-app-backend
+# Documentación electoral-app-frontend
 
 ## Version
 1.0.0
