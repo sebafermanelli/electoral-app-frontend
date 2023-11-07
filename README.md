@@ -1,27 +1,27 @@
-# React + TypeScript + Vite
+# Documentación electoral-app-frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Version
+1.0.0
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+## Instalación
+1. Clona este repositorio.
+2. Ejecuta el siguiente comando para instalar las dependencias:
+```bash
+npm install
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Uso
+### Modo de Desarrollo
+Ejecuta el siguiente comando para iniciar la aplicación en modo de desarrollo:
+```bash
+npm run dev
+```
+
+### Modo de Produccion
+Ejecuta el siguiente comando para iniciar la aplicación en modo produccion:
+```bash
+npm run build
+```
+
+## Reportar Problemas
+Si encuentras algún problema o tienes alguna sugerencia, por favor [crea un issue](https://github.com/sebafermanelli/electoral-app-frontend/issues).
