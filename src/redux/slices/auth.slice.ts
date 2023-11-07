@@ -34,22 +34,23 @@ export const authSlice = createSlice({
 	initialState,
 	reducers: {
 		login: (state, action) => {
-			return (state = {
-				...initialState,
+			return {
+				...state,
 				isAuth: true,
 				accessToken: action.payload.accessToken,
 				role: action.payload.role,
 				sub: action.payload.sub,
-			});
+			};
 		},
 		logout: (state) => {
-			return (state = {
-				...initialState,
+			return {
+				...state,
 				isAuth: false,
 				accessToken: null,
 				role: null,
 				sub: null,
-			});
+				exp: null,
+			};
 		},
 	},
 });
