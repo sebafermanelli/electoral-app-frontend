@@ -7,8 +7,7 @@ import { VoteType } from './votes';
 export type ElectionType = {
 	id?: string;
 	name: string;
-	startDate?: string;
-	endDate?: string;
+	finalizated?: boolean;
 	votes?: VoteType[];
 	roles?: RoleType[];
 	lists?: ListType[];

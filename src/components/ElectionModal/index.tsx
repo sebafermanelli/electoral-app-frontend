@@ -6,14 +6,14 @@ import {
 	DialogTitle,
 	FilledInput,
 	FormControl,
+	FormControlLabel,
 	InputLabel,
+	Switch,
 } from '@mui/material';
 import React from 'react';
 import { ElectionValidate } from '../../utils/validateForm';
 import { useNotification } from '../../context/notification.context';
 import { ElectionType, elections } from '../../api/elections';
-import { DateTimePicker, LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { useAppSelector } from '../../redux/hooks';
 
 type ElectionModalProps = {
@@ -28,8 +28,7 @@ export const ElectionModal: React.FC<ElectionModalProps> = ({ election, open, ha
 	const [electionData, setElectionData] = React.useState<ElectionType>({
 		id: undefined,
 		name: '',
-		startDate: undefined,
-		endDate: undefined,
+		finalizated: false,
 	});
 
 	React.useEffect(() => {
@@ -40,14 +39,6 @@ export const ElectionModal: React.FC<ElectionModalProps> = ({ election, open, ha
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setElectionData({ ...electionData, [e.target.name]: e.target.value });
-	};
-
-	const handleStartDateChange = (date: Date | null) => {
-		setElectionData({ ...electionData, startDate: date!.toISOString() });
-	};
-
-	const handleEndDateChange = (date: Date | null) => {
-		setElectionData({ ...electionData, endDate: date!.toISOString() });
 	};
 
 	const handleSubmit = () => {
@@ -103,23 +94,25 @@ export const ElectionModal: React.FC<ElectionModalProps> = ({ election, open, ha
 					></FilledInput>
 				</FormControl>
 
-				<LocalizationProvider dateAdapter={AdapterDayjs}>
-					<DateTimePicker
-						sx={{ width: '100%', my: 1 }}
-						className="startDate"
-						label="Fecha y hora de inicio"
-						defaultValue={undefined}
-						onChange={handleStartDateChange}
+				{election?.id ? (
+					<FormControlLabel
+						control={
+							<Switch
+								checked={electionData.finalizated}
+								onChange={() => {
+									setElectionData({
+										...electionData,
+										finalizated: !electionData.finalizated,
+									});
+								}}
+							/>
+						}
+						label="Finalizada"
+						sx={{ my: 1 }}
 					/>
-
-					<DateTimePicker
-						sx={{ width: '100%', my: 1 }}
-						className="endDate"
-						label="Fecha y hora de finalizacion"
-						defaultValue={undefined}
-						onChange={handleEndDateChange}
-					/>
-				</LocalizationProvider>
+				) : (
+					<></>
+				)}
 			</DialogContent>
 			<DialogActions>
 				<Button color="secondary" fullWidth variant="contained" size="large" onClick={handleClose}>

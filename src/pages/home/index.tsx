@@ -47,12 +47,10 @@ export const HomePage: React.FC<{}> = () => {
 		elections
 			.getAll(accessToken)
 			.then((response) => {
-				// TRATANDO DE FILTRAR LAS ELECCIONES QUE AUN NO FINALIZARON
-				// const elections = response.data.data.filter((election: ElectionType) => {
-				// 	new Date(election.startDate!).toDateString() < new Date().toDateString() &&
-				// 		new Date(election.endDate!).toDateString() > new Date().toDateString();
-				// });
-				setElectionList(response.data.data);
+				const elections = response.data.data.filter(
+					(election: ElectionType) => !election.finalizated
+				);
+				setElectionList(elections);
 			})
 			.catch((error) => {
 				getError(error.message);

@@ -27,11 +27,6 @@ export const UserValidate = yup.object().shape({
 
 export const ElectionValidate = yup.object().shape({
 	name: yup.string().required('El nombre es requerido'),
-	startDate: yup.date().required('La fecha de inicio es requerida'),
-	endDate: yup
-		.date()
-		.required('La fecha de finalizacion es requerida')
-		.min(yup.ref('startDate'), 'La fecha de finalizacion debe ser mayor que la de inicio'),
 });
 
 export const RoleValidate = yup.object().shape({

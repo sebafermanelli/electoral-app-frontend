@@ -165,8 +165,7 @@ export const ElectionTable: React.FC<ElectionTableProps> = ({
 							<TableRow>
 								<TableCell align="center">id</TableCell>
 								<TableCell align="center">name</TableCell>
-								<TableCell align="center">startDate</TableCell>
-								<TableCell align="center">endDate</TableCell>
+								<TableCell align="center">finalizated</TableCell>
 								<TableCell align="center">totalVotes</TableCell>
 								<TableCell align="center">options</TableCell>
 							</TableRow>
@@ -179,8 +178,7 @@ export const ElectionTable: React.FC<ElectionTableProps> = ({
 								>
 									<TableCell align="center">{election.id}</TableCell>
 									<TableCell align="center">{election.name}</TableCell>
-									<TableCell align="center">{String(election.startDate)}</TableCell>
-									<TableCell align="center">{String(election.endDate)}</TableCell>
+									<TableCell align="center">{String(election.finalizated)}</TableCell>
 									<TableCell align="center">{String(election.votes!.length)}</TableCell>
 									<TableCell align="center">
 										<Tooltip title="Editar">
@@ -189,8 +187,7 @@ export const ElectionTable: React.FC<ElectionTableProps> = ({
 													handleEdit({
 														id: election.id,
 														name: election.name,
-														startDate: election.startDate,
-														endDate: election.endDate,
+														finalizated: election.finalizated,
 													})
 												}
 											>
@@ -236,7 +233,7 @@ export const ElectionTable: React.FC<ElectionTableProps> = ({
 											</IconButton>
 										</Tooltip>
 										<Tooltip title="Generar resultados">
-											{new Date().toISOString() >= election.endDate! &&
+											{!election.finalizated! &&
 											election.delegation!.candidates!.length == 0 ? (
 												<IconButton onClick={() => handleGenResults(election)}>
 													<BarChart />
@@ -248,7 +245,7 @@ export const ElectionTable: React.FC<ElectionTableProps> = ({
 											)}
 										</Tooltip>
 										<Tooltip title="Ver resultados">
-											{new Date().toISOString() >= election.endDate! &&
+											{election.finalizated! &&
 											election.delegation!.candidates!.length > 0 ? (
 												<IconButton
 													onClick={() =>
@@ -281,7 +278,7 @@ export const ElectionTable: React.FC<ElectionTableProps> = ({
 					</Table>
 				</TableContainer>
 			) : (
-				<Typography textAlign="center">No hay elecciones registrados</Typography>
+				<Typography textAlign="center">No hay elecciones registradas</Typography>
 			)}
 		</>
 	);

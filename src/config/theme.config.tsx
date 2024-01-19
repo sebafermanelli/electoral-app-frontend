@@ -6,9 +6,9 @@ type ThemeProps = {
 };
 
 export enum themePalette {
-	BG = '#12181B',
-	PRIMARY = '#219ebc',
-	SECONDARY = '#e7ecef',
+	BG = '#0C0C0C',
+	PRIMARY = '#00A058',
+	SECONDARY = '#6F9584',
 	FONT_GLOBAL = "'Roboto', sans-serif",
 	ERROR_MAIN = '#B35252',
 	BG_ERROR_MAIN = 'rgba(244,67,54,0.1)',
@@ -42,7 +42,7 @@ const theme = createTheme({
 		MuiButton: {
 			defaultProps: {
 				style: {
-					textTransform: 'none',
+					textTransform: 'uppercase',
 				},
 			},
 		},
