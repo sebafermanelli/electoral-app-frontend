@@ -1,8 +1,5 @@
-import axios from 'axios';
-import * as dotenv from 'dotenv';
-
-dotenv.config();
+import axios from "axios";
 
 export const instance = axios.create({
-	baseURL: process.env.BASE_URL,
+    baseURL: "http://electoral-app-backend.railway.internal/api/",
 });
