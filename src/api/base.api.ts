@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export const instance = axios.create({
-    baseURL: "http://electoral-app-backend.railway.internal/api/",
+    baseURL: "http://localhost:8000/api/",
 });
